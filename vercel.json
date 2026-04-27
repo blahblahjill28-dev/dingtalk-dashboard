@@ -1,7 +1,3 @@
-// Vercel Cron 定时任务配置
-// 每5分钟自动执行一次数据同步
-// 文档: https://vercel.com/docs/cron-jobs
-
 {
   "crons": [
     {
