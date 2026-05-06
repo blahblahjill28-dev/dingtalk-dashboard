@@ -6,8 +6,9 @@ import path from 'path';
 import { createHash } from 'crypto';
 import type { SheetData, DashboardData, SyncStatus } from '@/types';
 
-// 数据存储目录
-const DATA_DIR = path.join(process.cwd(), 'data');
+// Vercel serverless 环境只能写入 /tmp，本地开发使用项目目录
+const isVercel = process.env.VERCEL === '1';
+const DATA_DIR = isVercel ? '/tmp/data' : path.join(process.cwd(), 'data');
 const DASHBOARD_FILE = path.join(DATA_DIR, 'dashboard.json');
 const SYNC_STATUS_FILE = path.join(DATA_DIR, 'sync-status.json');
 
