@@ -4,6 +4,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDashboardData } from '@/lib/storage';
 
+const DEMO_MODE = !process.env.DINGTALK_APP_KEY || !process.env.DINGTALK_TABLE_ID;
+
 export async function GET(request: NextRequest) {
   try {
     const dashboardData = await getDashboardData();
@@ -36,6 +38,7 @@ export async function GET(request: NextRequest) {
         success: true,
         data: sheet,
         lastUpdated: dashboardData.lastUpdated,
+        demoMode: DEMO_MODE,
       });
     }
 
@@ -43,6 +46,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: dashboardData,
+      demoMode: DEMO_MODE,
     });
   } catch (error: any) {
     return NextResponse.json(
