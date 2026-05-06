@@ -54,6 +54,7 @@ export interface DashboardData {
     totalRecords: number;
     totalSheets: number;
   };
+  demoMode?: boolean;
 }
 
 // 同步状态
