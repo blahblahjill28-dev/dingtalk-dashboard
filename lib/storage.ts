@@ -25,7 +25,7 @@ async function ensureDataDir(): Promise<void> {
  */
 export function computeChecksum(data: any): string {
   return createHash('md5')
-    .update(JSON.stringify(data, Object.keys(data).sort()))
+    .update(JSON.stringify(data))
     .digest('hex');
 }
 
