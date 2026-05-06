@@ -19,6 +19,7 @@ export default function Home() {
   const { data, error, isLoading, mutate } = useSWR<{
     success: boolean;
     data: DashboardData | null;
+    demoMode?: boolean;
   }>('/api/data', fetcher, {
     refreshInterval: 5 * 60 * 1000, // 5分钟自动刷新
     revalidateOnFocus: true,
